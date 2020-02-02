@@ -15,8 +15,10 @@ Extended OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/
   - [Animate Rotation](#Animate-Rotation)
 - [Example](#Example)
 ## File Format
-Since this extension focuses mostly on animation functionality, the file containing this code is named **Animated OBJ file** with the file extension of  
-`<filename>.amo`  
+Since this extension focuses mostly on animation functionality, the file containing this code is named **Animated OBJ file** with the file extension of
+```
+<filename>.amo  
+```
 It builds on top of the Wavefront OBJ syntax and uses the same patterns
 ## Textures
 ```
