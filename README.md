@@ -1,6 +1,18 @@
 # Extended OBJ
 Extended OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/format/wavefrontobj/egff.htm) format, which adds textures and animation functionality. The file extension is usually `.obj`  
 **Disclaimer: This file format is currently completely theoretical and hasn't been tested yet. Major issues might occur**
+## Table of Contents
+- [Textures](#Textures)
+- [Animation](#Animation)
+  - [Animated Object](#Animated-Object)
+  - [Vertex Joints](#Vertex-Joints)
+  - [Vertex Weights](#Vertex-Weights)
+  - [Addition to Faces](#Addition-to-Faces)
+  - [Joint Parent](#Joint-Parent)
+  - [Animation group](#Animation-Group)
+  - [Animate Position](#Animate-Position)
+  - [Animate Rotation](#Animate-Rotation)
+- [Example](#Example)
 ## Textures
 ```
 t <texturepath>
@@ -8,6 +20,12 @@ t <texturepath>
 Adds a texture to the wavefront object. This keyword should only be used once per object  
 - `<texturepath>` is the relative path to the texture file
 ## Animation
+### Animated Object
+```
+ao <name>
+```
+Instead of `o`, you can specify this keyword to make sure the file loader interprets the animation keywords the right way. `o` can be used for inanimate objects
+- `<name>` is the name of the animated object
 ### Vertex Joints
 ```
 vj <joint> <joint> <joint> <joint>
@@ -20,7 +38,7 @@ vw <weight> <weight> <weight> <weight>
 ```
 Adds a weight attribute to a vertex. The weight sets the influence of the joints. It is directly linked with `vj`
 - `<weight>` is a float value representing the influence of the corresponding joint. The four values should be normalized, that means the sum of the four weights should be 1
-### Faces
+### Addition to Faces
 ```
 f <pos>/<uv>/<normal>/<joints>/<weights>
 ```
@@ -36,7 +54,13 @@ jp <joint>
 ```
 Specifies the parent of one joint. It works of the same principal as the vertex implementation. The [example](#Example) at the end of this file should clarify it.
 - `<joint>` is the index of the parent joint. If the joint is the root joint (no parent), this value should be set as **-1**
-### Animation Position
+### Animation group
+```
+a <name>
+```
+All animation keywords after this command get grouped together, so you can create different animations for the same object (idle, walking, etc.)
+- `<name>` is the name of the animation
+### Animate Position
 ```
 ap <frame> <joint> <x> <y> <z>
 ```
@@ -44,7 +68,7 @@ Adds an animation keyframe for the position
 - `<frame>` is the timestamp at which the object should have this pose. Frame 0 is required
 - `<joint>` is the index of the joint, which position will be changed
 - `<x>`, `<y>`, `<z>` are float values, which determine the new position of the joint
-### Animation Rotation
+### Animate Rotation
 ```
 ar <frame> <joint> <x> <y> <z> <w>
 ```
@@ -55,7 +79,7 @@ Adds an animation keyframe for the rotation. **Warning: The rotation is in quate
 ## Example
 ```
 # Extended OBJ example
-o cube
+ao cube
 
 # the texture, which is in the same folder as the .obj file
 t image.png
@@ -126,6 +150,9 @@ f 5/14/6/1/1 1/20/6/1/1 2/9/6/1/1
 # the joints. The first one is the root joint with index 0 and is referenced in vj 0
 jp -1
 jp 0
+
+# Now follows the idle animation
+a idle
 
 # the animation. Move joint 1 to (1.0, 1.0, 1.0) and then to (-2.0, -2.0, -2.0)
 ap 0 1 1.0 1.0 1.0
