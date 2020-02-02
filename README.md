@@ -77,7 +77,7 @@ Adds an animation keyframe for the rotation. **Warning: The rotation is in quate
 - `<joint>` is the index of the joint, which rotation will be changed
 - `<x>`, `<y>`, `<z>`, `<w>` are float values, which determine the new rotation of the joint in quaternions
 ## Example
-```
+```obj
 # Extended OBJ example
 ao cube
 
