@@ -1,7 +1,8 @@
 # Extended OBJ
-Extended OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/format/wavefrontobj/egff.htm) format, which adds textures and animation functionality. The file extension is usually `.obj`  
+Extended OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/format/wavefrontobj/egff.htm) format, which adds textures and animation functionality.
 **Disclaimer: This file format is currently completely theoretical and hasn't been tested yet. Major issues might occur**
 ## Table of Contents
+- [File Format](#File-Format)
 - [Textures](#Textures)
 - [Animation](#Animation)
   - [Animated Object](#Animated-Object)
@@ -13,6 +14,10 @@ Extended OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/
   - [Animate Position](#Animate-Position)
   - [Animate Rotation](#Animate-Rotation)
 - [Example](#Example)
+## File Format
+Since this extension focuses mostly on animation functionality, the file containing this code is named **Animated OBJ file** with the file extension of  
+`<filename>.amo`  
+It builds on top of the Wavefront OBJ syntax and uses the same patterns
 ## Textures
 ```
 t <texturepath>
