@@ -96,7 +96,7 @@ Adds an animation keyframe for the position
 
 | argument            | type   | description |
 |:-------------------:|:------:|:-----------:|
-| `<frame>`           | float  | the timestamp at which the object should have this pose. Frame 0 is required |
+| `<frame>`           | float  | the timestamp in seconds at which the object should have this pose. Frame 0 is required |
 | `<joint>`           | int    | the index of the joint, which position will be changed |
 | `<x>`, `<y>`, `<z>` | float  | the new position of the joint |
 ### Animate Rotation
@@ -107,7 +107,7 @@ Adds an animation keyframe for the rotation. **Warning: The rotation is in quate
 
 | argument                   | type   | description |
 |:--------------------------:|:------:|:-----------:|
-| `<frame>`                  | float  | the timestamp at which the object should have this pose. Frame 0 is required |
+| `<frame>`                  | float  | the timestamp in seconds at which the object should have this pose. Frame 0 is required |
 | `<joint>`                  | int    | the index of the joint, which rotation will be changed
 | `<x>`, `<y>`, `<z>`, `<w>` |  float | the new rotation of the joint in quaternions |
 ## Example
