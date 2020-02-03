@@ -20,6 +20,8 @@ Since this extension focuses mostly on animation functionality, the file contain
 <filename>.amo  
 ```
 It builds on top of the Wavefront OBJ syntax and uses the same patterns
+___
+___
 ## Textures
 ```
 t <texturepath>
@@ -29,6 +31,7 @@ Adds a texture to the wavefront object. This keyword should only be used once pe
 | argument        | type   | description                           |
 |:---------------:|:------:|:-------------------------------------:|
 | `<texturepath>` | string | the relative path to the texture file |
+___
 ## Animation
 ### Animated Object
 ```
@@ -39,6 +42,7 @@ Instead of `o`, you can specify this keyword to make sure the file loader interp
 | argument | type   | description                     |
 |:--------:|:------:|:-------------------------------:|
 | `<name>` | string | the name of the animated object |
+___
 ### Vertex Joints
 ```
 vj <joint> <joint> <joint> <joint>
@@ -48,6 +52,7 @@ Adds a joint attribute to a vertex. Each joint is able to influence the position
 | argument  | type | description |
 |:---------:|:----:|:-----------:|
 | `<joint>` | int |  the index of the affecting joint. If there are less than 4 joints affecting the vertex, all other joint ids should be set to **-1** |
+___
 ### Vertex Weights
 ```
 vw <weight> <weight> <weight> <weight>
@@ -57,6 +62,7 @@ Adds a weight attribute to a vertex. The weight sets the influence of the joints
 | argument  | type  | description |
 |:---------:|:-----:|:-----------:|
 |`<weight>` | float | the influence of the corresponding joint. The four values should be normalized, that means the sum of the four weights should be 1 |
+___
 ### Addition to Faces
 ```
 f <pos>/<uv>/<normal>/<joints>/<weights>
@@ -70,6 +76,7 @@ Instead of the usual 3 attributes, you now have five attributes
 | `<normal>`  | int  | the index of the vertex normal |
 | `<joints>`  | int  | the index of the vertex joints (not the real joints) |
 | `<weights>` | int  | the index of the vertex weights |
+___
 ### Joint Parent
 ```
 jp <joint>
@@ -79,6 +86,7 @@ Specifies the parent of one joint. It works of the same principal as the vertex 
 | argument  | type | description |
 |:---------:|:----:|:-----------:|
 | `<joint>` | int  | the index of the parent joint. If the joint is the root joint (no parent), this value should be set as **-1** |
+___
 ### Animation group
 ```
 a <name>
@@ -88,6 +96,7 @@ All animation keywords after this command get grouped together, so you can creat
 | argument | type   | description               |
 |:--------:|:------:|:-------------------------:|
 | `<name>` | string | the name of the animation |
+___
 ### Animate Position
 ```
 ap <frame> <joint> <x> <y> <z>
@@ -99,6 +108,7 @@ Adds an animation keyframe for the position
 | `<frame>`           | float  | the timestamp in seconds at which the object should have this pose. Frame 0 is required |
 | `<joint>`           | int    | the index of the joint, which position will be changed |
 | `<x>`, `<y>`, `<z>` | float  | the new position of the joint |
+___
 ### Animate Rotation
 ```
 ar <frame> <joint> <x> <y> <z> <w>
@@ -110,6 +120,7 @@ Adds an animation keyframe for the rotation. **Warning: The rotation is in quate
 | `<frame>`                  | float  | the timestamp in seconds at which the object should have this pose. Frame 0 is required |
 | `<joint>`                  | int    | the index of the joint, which rotation will be changed
 | `<x>`, `<y>`, `<z>`, `<w>` |  float | the new rotation of the joint in quaternions |
+___
 ## Example
 ```obj
 # Extended OBJ example
