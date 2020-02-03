@@ -24,65 +24,92 @@ It builds on top of the Wavefront OBJ syntax and uses the same patterns
 ```
 t <texturepath>
 ```
-Adds a texture to the wavefront object. This keyword should only be used once per object  
-- `<texturepath>` is the relative path to the texture file
+Adds a texture to the wavefront object. This keyword should only be used once per object
+
+| argument        | type   | description                           |
+|:---------------:|:------:|:-------------------------------------:|
+| `<texturepath>` | string | the relative path to the texture file |
 ## Animation
 ### Animated Object
 ```
 ao <name>
 ```
 Instead of `o`, you can specify this keyword to make sure the file loader interprets the animation keywords the right way. `o` can be used for inanimate objects
-- `<name>` is the name of the animated object
+
+| argument | type   | description                     |
+|:--------:|:------:|:-------------------------------:|
+| `<name>` | string | the name of the animated object |
 ### Vertex Joints
 ```
 vj <joint> <joint> <joint> <joint>
 ```
 Adds a joint attribute to a vertex. Each joint is able to influence the position and rotation of the vertex. A vertex can be influenced by up to 4 joints.
-- `<joint>` is an integer, which represents the index of the affecting joint. If there are less than 4 joints affecting the vertex, all other joint ids should be set to **-1**
+
+| argument  | type | description |
+|:---------:|:----:|:-----------:|
+| `<joint>` | int |  the index of the affecting joint. If there are less than 4 joints affecting the vertex, all other joint ids should be set to **-1** |
 ### Vertex Weights
 ```
 vw <weight> <weight> <weight> <weight>
 ```
 Adds a weight attribute to a vertex. The weight sets the influence of the joints. It is directly linked with `vj`
-- `<weight>` is a float value representing the influence of the corresponding joint. The four values should be normalized, that means the sum of the four weights should be 1
+
+| argument  | type  | description |
+|:---------:|:-----:|:-----------:|
+|`<weight>` | float | the influence of the corresponding joint. The four values should be normalized, that means the sum of the four weights should be 1 |
 ### Addition to Faces
 ```
 f <pos>/<uv>/<normal>/<joints>/<weights>
 ```
 Instead of the usual 3 attributes, you now have five attributes
-- `<pos>` is the index of the vertex position
-- `<uv>` is the index of the vertex uv
-- `<normal>` is the index of the vertex normal
-- `<joints>` is the index of the vertex joints (not the real joints)
-- `<weights>` is the index of the vertex weights
+
+| argument    | type | description |
+|:-----------:|:----:|:-----------:|
+| `<pos>`     | int  | the index of the vertex position |
+| `<uv>`      | int  | the index of the vertex uv |
+| `<normal>`  | int  | the index of the vertex normal |
+| `<joints>`  | int  | the index of the vertex joints (not the real joints) |
+| `<weights>` | int  | the index of the vertex weights |
 ### Joint Parent
 ```
 jp <joint>
 ```
 Specifies the parent of one joint. It works of the same principal as the vertex implementation. The [example](#Example) at the end of this file should clarify it.
-- `<joint>` is the index of the parent joint. If the joint is the root joint (no parent), this value should be set as **-1**
+
+| argument  | type | description |
+|:---------:|:----:|:-----------:|
+| `<joint>` | int  | the index of the parent joint. If the joint is the root joint (no parent), this value should be set as **-1** |
 ### Animation group
 ```
 a <name>
 ```
 All animation keywords after this command get grouped together, so you can create different animations for the same object (idle, walking, etc.)
-- `<name>` is the name of the animation
+
+| argument | type   | description               |
+|:--------:|:------:|:-------------------------:|
+| `<name>` | string | the name of the animation |
 ### Animate Position
 ```
 ap <frame> <joint> <x> <y> <z>
 ```
 Adds an animation keyframe for the position
-- `<frame>` is the timestamp at which the object should have this pose. Frame 0 is required
-- `<joint>` is the index of the joint, which position will be changed
-- `<x>`, `<y>`, `<z>` are float values, which determine the new position of the joint
+
+| argument            | type   | description |
+|:-------------------:|:------:|:-----------:|
+| `<frame>`           | float  | the timestamp at which the object should have this pose. Frame 0 is required |
+| `<joint>`           | int    | the index of the joint, which position will be changed |
+| `<x>`, `<y>`, `<z>` | float  | the new position of the joint |
 ### Animate Rotation
 ```
 ar <frame> <joint> <x> <y> <z> <w>
 ```
 Adds an animation keyframe for the rotation. **Warning: The rotation is in quaternions and not in the usual euler rotation format**
-- `<frame>` is the timestamp at which the object should have this pose. Frame 0 is required.
-- `<joint>` is the index of the joint, which rotation will be changed
-- `<x>`, `<y>`, `<z>`, `<w>` are float values, which determine the new rotation of the joint in quaternions
+
+| argument                   | type   | description |
+|:--------------------------:|:------:|:-----------:|
+| `<frame>`                  | float  | the timestamp at which the object should have this pose. Frame 0 is required |
+| `<joint>`                  | int    | the index of the joint, which rotation will be changed
+| `<x>`, `<y>`, `<z>`, `<w>` |  float | the new rotation of the joint in quaternions |
 ## Example
 ```obj
 # Extended OBJ example
@@ -168,3 +195,6 @@ ap 60 1 -2.0 -2.0 -2.0
 # rotate joint 0
 ar 0 0 0.0 0.0 1.0 0.0
 ```
+## License
+![Public Domain](https://i.creativecommons.org/p/mark/1.0/88x31.png  "Public Domain")  
+This work is free of known copyright restrictions.
