@@ -9,7 +9,7 @@ Extended OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/
   - [Vertex Joints](#Vertex-Joints)
   - [Vertex Weights](#Vertex-Weights)
   - [Addition to Faces](#Addition-to-Faces)
-  - [Joint Parent](#Joint-Parent)
+  - [Joints](#Joints)
   - [Animation group](#Animation-Group)
   - [Animate Position](#Animate-Position)
   - [Animate Rotation](#Animate-Rotation)
@@ -77,15 +77,16 @@ Instead of the usual 3 attributes, you now have five attributes
 | `<joints>`  | int  | the index of the vertex joints (not the real joints) |
 | `<weights>` | int  | the index of the vertex weights |
 ___
-### Joint Parent
+### Joints
 ```
-jp <joint>
+j <name> <joint>
 ```
-Specifies the parent of one joint. It works of the same principal as the vertex implementation. The [example](#Example) at the end of this file should clarify it.
+Specifies one joint/bone with its name and its parent. It works of the same principal as the vertex implementation. So the first `j` has index 0, the second `j` index 1, etc. The [example](#Example) at the end of this file should clarify it
 
-| argument  | type | description |
-|:---------:|:----:|:-----------:|
-| `<joint>` | int  | the index of the parent joint. If the joint is the root joint (no parent), this value should be set as **-1** |
+| argument  | type   | description |
+|:---------:|:------:|:-----------:|
+| `<name>`  | string | the name of the joint |
+| `<joint>` | int    | the index of the parent joint. If the joint is the root joint (no parent), this value should be set as **-1** |
 ___
 ### Animation group
 ```
@@ -99,25 +100,25 @@ All animation keywords after this command get grouped together, so you can creat
 ___
 ### Animate Position
 ```
-ap <frame> <joint> <x> <y> <z>
+ap <timestamp> <joint> <x> <y> <z>
 ```
 Adds an animation keyframe for the position
 
 | argument            | type   | description |
 |:-------------------:|:------:|:-----------:|
-| `<frame>`           | float  | the timestamp in seconds at which the object should have this pose. Frame 0 is required |
+| `<timestamp>`       | float  | the timestamp at which the object should have this pose. Timestamp 0 is required |
 | `<joint>`           | int    | the index of the joint, which position will be changed |
 | `<x>`, `<y>`, `<z>` | float  | the new position of the joint |
 ___
 ### Animate Rotation
 ```
-ar <frame> <joint> <x> <y> <z> <w>
+ar <timestamp> <joint> <x> <y> <z> <w>
 ```
 Adds an animation keyframe for the rotation. **Warning: The rotation is in quaternions and not in the usual euler rotation format**
 
 | argument                   | type   | description |
 |:--------------------------:|:------:|:-----------:|
-| `<frame>`                  | float  | the timestamp in seconds at which the object should have this pose. Frame 0 is required |
+| `<timestamp>`              | float  | the timestamp at which the object should have this pose. Timestamp 0 is required |
 | `<joint>`                  | int    | the index of the joint, which rotation will be changed
 | `<x>`, `<y>`, `<z>`, `<w>` |  float | the new rotation of the joint in quaternions |
 ___
@@ -193,19 +194,19 @@ f 1/11/5/1/1 3/19/5/1/1 4/12/5/1/1
 f 5/14/6/1/1 1/20/6/1/1 2/9/6/1/1
 
 # the joints. The first one is the root joint with index 0 and is referenced in vj 0
-jp -1
-jp 0
+j Joint_0 -1
+j Joint_1 0
 
 # Now follows the idle animation
 a idle
 
 # the animation. Move joint 1 to (1.0, 1.0, 1.0) and then to (-2.0, -2.0, -2.0)
 ap 0 1 1.0 1.0 1.0
-ap 60 1 -2.0 -2.0 -2.0
+ap 0.5 1 -2.0 -2.0 -2.0
 
 # rotate joint 0
 ar 0 0 0.0 0.0 1.0 0.0
 ```
 ## License
-![Public Domain](https://i.creativecommons.org/p/mark/1.0/88x31.png  "Public Domain")  
+[![Public Domain](https://i.creativecommons.org/p/mark/1.0/88x31.png  "Public Domain")](https://creativecommons.org/publicdomain/mark/1.0/)  
 This work is free of known copyright restrictions.
