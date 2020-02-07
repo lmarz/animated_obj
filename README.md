@@ -1,18 +1,16 @@
-# Extended OBJ
-Extended OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/format/wavefrontobj/egff.htm) format, which adds textures and animation functionality.
+# Animated OBJ
+Animated OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/format/wavefrontobj/egff.htm) format, which adds animation functionality.
 **Disclaimer: This file format is currently completely theoretical and hasn't been tested yet. Major issues might occur**
 ## Table of Contents
 - [File Format](#File-Format)
-- [Textures](#Textures)
-- [Animation](#Animation)
-  - [Animated Object](#Animated-Object)
-  - [Vertex Joints](#Vertex-Joints)
-  - [Vertex Weights](#Vertex-Weights)
-  - [Addition to Faces](#Addition-to-Faces)
-  - [Joints](#Joints)
-  - [Animation group](#Animation-Group)
-  - [Animate Position](#Animate-Position)
-  - [Animate Rotation](#Animate-Rotation)
+- [Animated Object](#Animated-Object)
+- [Vertex Joints](#Vertex-Joints)
+- [Vertex Weights](#Vertex-Weights)
+- [Addition to Faces](#Addition-to-Faces)
+- [Joints](#Joints)
+- [Animation group](#Animation-Group)
+- [Animate Position](#Animate-Position)
+- [Animate Rotation](#Animate-Rotation)
 - [Example](#Example)
 ## File Format
 Since this extension focuses mostly on animation functionality, the file containing this code is named **Animated OBJ file** with the file extension of
@@ -22,18 +20,7 @@ Since this extension focuses mostly on animation functionality, the file contain
 It builds on top of the Wavefront OBJ syntax and uses the same patterns
 ___
 ___
-## Textures
-```
-t <texturepath>
-```
-Adds a texture to the wavefront object. This keyword should only be used once per object
-
-| argument        | type   | description                           |
-|:---------------:|:------:|:-------------------------------------:|
-| `<texturepath>` | string | the relative path to the texture file |
-___
-## Animation
-### Animated Object
+## Animated Object
 ```
 ao <name>
 ```
@@ -43,7 +30,7 @@ Instead of `o`, you can specify this keyword to make sure the file loader interp
 |:--------:|:------:|:-------------------------------:|
 | `<name>` | string | the name of the animated object |
 ___
-### Vertex Joints
+## Vertex Joints
 ```
 vj <joint> <joint> <joint> <joint>
 ```
@@ -53,7 +40,7 @@ Adds a joint attribute to a vertex. Each joint is able to influence the position
 |:---------:|:----:|:-----------:|
 | `<joint>` | int |  the index of the affecting joint. If there are less than 4 joints affecting the vertex, all other joint ids should be set to **-1** |
 ___
-### Vertex Weights
+## Vertex Weights
 ```
 vw <weight> <weight> <weight> <weight>
 ```
@@ -63,7 +50,7 @@ Adds a weight attribute to a vertex. The weight sets the influence of the joints
 |:---------:|:-----:|:-----------:|
 |`<weight>` | float | the influence of the corresponding joint. The four values should be normalized, that means the sum of the four weights should be 1 |
 ___
-### Addition to Faces
+## Addition to Faces
 ```
 f <pos>/<uv>/<normal>/<joints>/<weights>
 ```
@@ -77,7 +64,7 @@ Instead of the usual 3 attributes, you now have five attributes
 | `<joints>`  | int  | the index of the vertex joints (not the real joints) |
 | `<weights>` | int  | the index of the vertex weights |
 ___
-### Joints
+## Joints
 ```
 j <name> <joint>
 ```
@@ -88,7 +75,7 @@ Specifies one joint/bone with its name and its parent. It works of the same prin
 | `<name>`  | string | the name of the joint |
 | `<joint>` | int    | the index of the parent joint. If the joint is the root joint (no parent), this value should be set as **-1** |
 ___
-### Animation group
+## Animation group
 ```
 a <name>
 ```
@@ -98,7 +85,7 @@ All animation keywords after this command get grouped together, so you can creat
 |:--------:|:------:|:-------------------------:|
 | `<name>` | string | the name of the animation |
 ___
-### Animate Position
+## Animate Position
 ```
 ap <timestamp> <joint> <x> <y> <z>
 ```
@@ -110,7 +97,7 @@ Adds an animation keyframe for the position
 | `<joint>`           | int    | the index of the joint, which position will be changed |
 | `<x>`, `<y>`, `<z>` | float  | the new position of the joint |
 ___
-### Animate Rotation
+## Animate Rotation
 ```
 ar <timestamp> <joint> <x> <y> <z> <w>
 ```
@@ -124,11 +111,8 @@ Adds an animation keyframe for the rotation. **Warning: The rotation is in quate
 ___
 ## Example
 ```obj
-# Extended OBJ example
+# Animated OBJ example
 ao cube
-
-# the texture, which is in the same folder as the .obj file
-t image.png
 
 # The vertex positions
 v 1.0 1.0 -1.0
