@@ -68,7 +68,7 @@ ___
 ```
 j <name> <joint>
 ```
-Specifies one joint/bone with its name and its parent. It works of the same principal as the vertex implementation. So the first `j` has index 0, the second `j` index 1, etc. The [example](#Example) at the end of this file should clarify it
+Specifies one joint/bone with its name and its parent. It works of the same principal as the vertex implementation. So the first `j` has index 1, the second `j` index 2, etc. The [example](#Example) at the end of this file should clarify it
 
 | argument  | type   | description |
 |:---------:|:------:|:-----------:|
@@ -156,40 +156,40 @@ vn 1.0 0.0 0.0
 vn 0.0 0.0 -1.0
 
 # the vertex joints
-vj 0 -1 -1 -1
-vj 0 1 -1 -1
+vj 1 -1 -1 -1
+vj 1 2 -1 -1
 
 # the vertex weights
 vw 1 0 0 0
 vw 0 1 0 0 
 
 # the faces for the object with the additional vertex joints and vertex weights
-f 5/1/1/0/0 3/2/1/0/0 1/3/1/0/0
-f 3/4/2/0/0 8/5/2/0/0 4/6/2/0/0
-f 7/7/3/0/0 6/8/3/0/0 8/5/3/0/0
-f 2/9/4/0/0 8/10/4/0/0 6/8/4/0/0
-f 1/11/5/0/0 4/12/5/0/0 2/13/5/0/0
-f 5/14/6/0/0 2/9/6/0/0 6/15/6/0/0
-f 5/1/1/1/1 7/16/1/1/1 3/2/1/1/1
-f 3/4/2/1/1 7/7/2/1/1 8/5/2/1/1
-f 7/7/3/1/1 5/17/3/1/1 6/8/3/1/1
-f 2/9/4/1/1 4/18/4/1/1 8/10/4/1/1
-f 1/11/5/1/1 3/19/5/1/1 4/12/5/1/1
-f 5/14/6/1/1 1/20/6/1/1 2/9/6/1/1
+f 5/1/1/1/1 3/2/1/1/1 1/3/1/1/1
+f 3/4/2/1/1 8/5/2/1/1 4/6/2/1/1
+f 7/7/3/1/1 6/8/3/1/1 8/5/3/1/1
+f 2/9/4/1/1 8/10/4/1/1 6/8/4/1/1
+f 1/11/5/1/1 4/12/5/1/1 2/13/5/1/1
+f 5/14/6/1/1 2/9/6/1/1 6/15/6/1/1
+f 5/1/1/2/2 7/16/1/2/2 3/2/1/2/2
+f 3/4/2/2/2 7/7/2/2/2 8/5/2/2/2
+f 7/7/3/2/2 5/17/3/2/2 6/8/3/2/2
+f 2/9/4/2/2 4/18/4/2/2 8/10/4/2/2
+f 1/11/5/2/2 3/19/5/2/2 4/12/5/2/2
+f 5/14/6/2/2 1/20/6/2/2 2/9/6/2/2
 
-# the joints. The first one is the root joint with index 0 and is referenced in vj 0
-j Joint_0 -1
-j Joint_1 0
+# the joints. The first one is the root joint with index 1 and is referenced in vj 1
+j Joint_1 -1
+j Joint_2 1
 
 # Now follows the idle animation
 a idle
 
 # the animation. Move joint 1 to (1.0, 1.0, 1.0) and then to (-2.0, -2.0, -2.0)
-ap 0 1 1.0 1.0 1.0
-ap 0.5 1 -2.0 -2.0 -2.0
+ap 0 2 1.0 1.0 1.0
+ap 0.5 2 -2.0 -2.0 -2.0
 
-# rotate joint 0
-ar 0 0 0.0 0.0 1.0 0.0
+# rotate joint 1
+ar 0 1 0.0 0.0 1.0 0.0
 ```
 ## License
 [![Public Domain](https://i.creativecommons.org/p/mark/1.0/88x31.png  "Public Domain")](https://creativecommons.org/publicdomain/mark/1.0/)  
