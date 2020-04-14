@@ -195,7 +195,7 @@ ar 0 1 0.0 0.0 1.0 0.0
 
 ## Available Tools
 - [editamo](https://github.com/lmarz/editamo): Coversion tool from the glTF file format to the Animated OBJ file format
-- [amoloader](htpps://github.com/enudstudios/amoloader): Simple library that loads and parses Animated OBJ files written in C89
+- [amoloader](https://github.com/enudstudios/amoloader): Simple library that loads and parses Animated OBJ files written in C89
 
 ## License
 [![Public Domain](https://i.creativecommons.org/p/mark/1.0/88x31.png  "Public Domain")](https://creativecommons.org/publicdomain/mark/1.0/)  
