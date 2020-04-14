@@ -12,6 +12,7 @@ Animated OBJ is an extension to the [Wavefront OBJ](https://www.fileformat.info/
 - [Animate Position](#Animate-Position)
 - [Animate Rotation](#Animate-Rotation)
 - [Example](#Example)
+- [Available Tools](#Available-Tools)
 ## File Format
 Since this extension focuses mostly on animation functionality, the file containing this code is named **Animated OBJ file** with the file extension of
 ```
@@ -38,7 +39,7 @@ Adds a joint attribute to a vertex. Each joint is able to influence the position
 
 | argument  | type | description |
 |:---------:|:----:|:-----------:|
-| `<joint>` | int |  the index of the affecting joint. If there are less than 4 joints affecting the vertex, all other joint ids should be set to **-1** |
+| `<joint>` | int |  the index of the affecting joint. If there are less than 4 joints affecting the vertex, all other joint ids should be set to **0** with a weight of **0** |
 ___
 ## Vertex Weights
 ```
@@ -191,6 +192,11 @@ ap 0.5 2 -2.0 -2.0 -2.0
 # rotate joint 1
 ar 0 1 0.0 0.0 1.0 0.0
 ```
+
+## Available Tools
+- [editamo](https://github.com/lmarz/editamo): Coversion tool from the glTF file format to the Animated OBJ file format
+- [amoloader](htpps://github.com/enudstudios/amoloader): Simple library that loads and parses Animated OBJ files written in C89
+
 ## License
 [![Public Domain](https://i.creativecommons.org/p/mark/1.0/88x31.png  "Public Domain")](https://creativecommons.org/publicdomain/mark/1.0/)  
 This work is free of known copyright restrictions.
