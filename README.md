@@ -194,6 +194,7 @@ ar 0 1 0.0 0.0 1.0 0.0
 ```
 
 ## Available Tools
+- [AmoAddon](https://github.com/Vasall/amo_addon): Blender addon for exporting objects as Animated OBJ files
 - [editamo](https://github.com/lmarz/editamo): Coversion tool from the glTF file format to the Animated OBJ file format
 - [amoloader](https://github.com/enudstudios/amoloader): Simple library that loads and parses Animated OBJ files written in C89
 
